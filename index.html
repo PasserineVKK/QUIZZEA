@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizea</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <main id="app-container">
+     <section id="start-screen" class="screen active">
+        <h1>Welcome to Quizea</h1>
+        <h3>Select topic</h3>
+        <select name="Categories" id="topic-selection">
+            <option value="0">-----Choose one topic-----</option>
+        </select>
+        <button id="start-btn">Start</button>
+    </section>
+
+    <section id="quiz-screen" class="screen hidden">
+        <h2 id="quiz-topic">TOPIC: ...</h2>
+        <div id="question-counter">Question <span id="current-ques">0</span></div>
+
+        <div class="question-box">
+            <p id="question-text">Question shown here</p>
+            <div id="options-container" class="options-grid">
+                
+            </div>
+            <div id="feedback"></div>
+            <button id="next-btn" disabled>Next question</button>
+        </div>
+    </section>
+
+    <section id="result-screen" class="screen hidden">
+        <h1>Game end</h1>
+        <p>Your score: <span id="final-score">0</span>/10</p>
+        <button id="restart-btn">Replay</button>
+        <h2>Review</h2>
+        <div id="review-container"></div>
+    </section>
+   </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

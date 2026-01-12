@@ -1,0 +1,43 @@
+/* Thiết lập cơ bản */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    padding: 20px;
+}
+
+/* Ẩn các màn hình không hoạt động */
+.screen.hidden {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Định dạng cho màn hình bắt đầu */
+#topic-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.topic-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.topic-button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,258 @@
+{
+  "topics": [
+    {
+      "id": 1,
+      "name": "Semantic HTML",
+      "description": "Các thẻ HTML có ý nghĩa rõ ràng về nội dung.",
+      "questions": [
+        {
+          "id": 101,
+          "question": "Thẻ nào sau đây nên được sử dụng để chứa nội dung chính (main content) của tài liệu?",
+          "options": {
+            "A": "<section>",
+            "B": "<article>",
+            "C": "<main>",
+            "D": "<div>"
+          },
+          "correct_answer": "C",
+          "explanation": "Thẻ `<main>` đại diện cho nội dung chính của phần thân tài liệu."
+        },
+        {
+          "id": 102,
+          "question": "Thẻ nào được sử dụng để đánh dấu phần đầu trang (header) của một tài liệu hoặc một phần (section/article)?",
+          "options": {
+            "A": "<footer>",
+            "B": "<head>",
+            "C": "<top>",
+            "D": "<header>"
+          },
+          "correct_answer": "D",
+          "explanation": "Thẻ `<header>` chứa nội dung giới thiệu hoặc điều hướng."
+        },
+        {
+          "id": 103,
+          "question": "Trong HTML5, thẻ nào phù hợp nhất để nhóm các liên kết điều hướng (navigation links)?",
+          "options": {
+            "A": "<menu>",
+            "B": "<nav>",
+            "C": "<ul>",
+            "D": "<links>"
+          },
+          "correct_answer": "B",
+          "explanation": "Thẻ `<nav>` chứa các liên kết điều hướng chính."
+        },
+        {
+          "id": 104,
+          "question": "Sự khác biệt chính giữa `<section>` và `<article>` là gì?",
+          "options": {
+            "A": "Không có sự khác biệt về mặt ngữ nghĩa.",
+            "B": "`<article>` dùng cho nội dung độc lập, còn `<section>` dùng để nhóm nội dung liên quan.",
+            "C": "`<section>` chỉ dùng được trong `<main>`, còn `<article>` thì không.",
+            "D": "`<article>` chỉ được dùng cho blog posts."
+          },
+          "correct_answer": "B",
+          "explanation": "Thẻ `<article>` phải có khả năng đứng độc lập. Thẻ `<section>` dùng để nhóm nội dung liên quan trong một tài liệu hoặc bài viết."
+        },
+        {
+          "id": 105,
+          "question": "Thẻ nào sau đây không phải là một thẻ Semantic HTML5?",
+          "options": {
+            "A": "<aside>",
+            "B": "<figure>",
+            "C": "<span>",
+            "D": "<figcaption>"
+          },
+          "correct_answer": "C",
+          "explanation": "Thẻ `<span>` là thẻ non-semantic (không có ý nghĩa cụ thể), chỉ dùng để định dạng nội tuyến (inline)."
+        },
+        {
+          "id": 106,
+          "question": "Bạn nên sử dụng thẻ nào để đánh dấu một trích dẫn dài (block of quotation)?",
+          "options": {
+            "A": "<q>",
+            "B": "<cite>",
+            "C": "<quote>",
+            "D": "<blockquote>"
+          },
+          "correct_answer": "D",
+          "explanation": "Thẻ `<blockquote>` dùng cho các trích dẫn dài, có thể kéo dài nhiều dòng."
+        },
+        {
+          "id": 107,
+          "question": "Thẻ nào được sử dụng để hiển thị một chú thích (caption) cho thẻ `<figure>`?",
+          "options": {
+            "A": "<caption>",
+            "B": "<label>",
+            "C": "<figcaption>",
+            "D": "<figure-caption>"
+          },
+          "correct_answer": "C",
+          "explanation": "Thẻ `<figcaption>` cung cấp một chú thích hoặc tiêu đề cho nội dung của thẻ `<figure>`."
+        },
+        {
+          "id": 108,
+          "question": "Thẻ `<aside>` được sử dụng cho mục đích gì?",
+          "options": {
+            "A": "Hiển thị nội dung ở thanh bên (sidebar).",
+            "B": "Đánh dấu nội dung không liên quan trực tiếp đến nội dung chính.",
+            "C": "Chỉ dùng để chèn quảng cáo.",
+            "D": "Cả A và B."
+          },
+          "correct_answer": "D",
+          "explanation": "Thẻ `<aside>` chứa nội dung liên quan gián tiếp hoặc được đặt ở thanh bên."
+        },
+        {
+          "id": 109,
+          "question": "Thẻ nào được coi là không còn dùng (deprecated) trong HTML5 và nên được thay thế bằng CSS?",
+          "options": {
+            "A": "<i>",
+            "B": "<b>",
+            "C": "<center>",
+            "D": "<em>"
+          },
+          "correct_answer": "C",
+          "explanation": "Thẻ `<center>` đã bị loại bỏ. Việc căn chỉnh nên được thực hiện bằng CSS (`text-align: center;`)."
+        },
+        {
+          "id": 110,
+          "question": "Trong HTML, thẻ `<time>` được sử dụng để:",
+          "options": {
+            "A": "Chèn một đồng hồ đếm ngược.",
+            "B": "Đánh dấu thời gian đã trôi qua.",
+            "C": "Đánh dấu thời gian hoặc ngày tháng, có thể được đọc bởi máy.",
+            "D": "Hiển thị thời gian hiện tại trên máy chủ."
+          },
+          "correct_answer": "C",
+          "explanation": "Thẻ `<time>` cho phép máy tính hiểu rõ hơn về ngày giờ được hiển thị, đặc biệt khi dùng thuộc tính `datetime`."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Thuộc tính cơ bản trong CSS",
+      "description": "Các thuộc tính CSS thường gặp để định dạng trang web.",
+      "questions": [
+        {
+          "id": 201,
+          "question": "Thuộc tính CSS nào được sử dụng để thay đổi màu chữ (text color)?",
+          "options": {
+            "A": "background-color",
+            "B": "font-color",
+            "C": "color",
+            "D": "text-color"
+          },
+          "correct_answer": "C",
+          "explanation": "Thuộc tính `color` trong CSS dùng để thiết lập màu sắc của văn bản."
+        },
+        {
+          "id": 202,
+          "question": "Thuộc tính nào được sử dụng để tạo khoảng cách bên ngoài (khoảng trống bên ngoài) của một phần tử?",
+          "options": {
+            "A": "padding",
+            "B": "border",
+            "C": "spacing",
+            "D": "margin"
+          },
+          "correct_answer": "D",
+          "explanation": "Thuộc tính `margin` kiểm soát khoảng cách xung quanh các phần tử (bên ngoài viền)."
+        },
+        {
+          "id": 203,
+          "question": "Giá trị mặc định của thuộc tính `position` trong CSS là gì?",
+          "options": {
+            "A": "relative",
+            "B": "absolute",
+            "C": "static",
+            "D": "fixed"
+          },
+          "correct_answer": "C",
+          "explanation": "`static` là giá trị mặc định, phần tử được đặt theo luồng bình thường của tài liệu."
+        },
+        {
+          "id": 204,
+          "question": "Thuộc tính nào được dùng để kiểm soát kích thước phông chữ (font size)?",
+          "options": {
+            "A": "text-size",
+            "B": "font-size",
+            "C": "text-style",
+            "D": "font-weight"
+          },
+          "correct_answer": "B",
+          "explanation": "`font-size` thiết lập kích thước của văn bản."
+        },
+        {
+          "id": 205,
+          "question": "Cách nào sau đây được sử dụng để đặt chiều rộng (width) của một phần tử là 50% của phần tử cha (parent element)?",
+          "options": {
+            "A": "width: 50px;",
+            "B": "width: 50rem;",
+            "C": "width: 50%;",
+            "D": "width: 50em;"
+          },
+          "correct_answer": "C",
+          "explanation": "Sử dụng đơn vị phần trăm (`%`) để đặt kích thước tương đối so với phần tử cha."
+        },
+        {
+          "id": 206,
+          "question": "Thuộc tính `box-sizing: border-box;` có tác dụng gì?",
+          "options": {
+            "A": "Bao gồm padding và margin trong tổng chiều rộng/cao.",
+            "B": "Chỉ bao gồm margin trong tổng chiều rộng/cao.",
+            "C": "Bao gồm padding và border trong tổng chiều rộng/cao.",
+            "D": "Đặt border-style là box."
+          },
+          "correct_answer": "C",
+          "explanation": "Với `border-box`, `width` và `height` bao gồm nội dung (content), padding và border."
+        },
+        {
+          "id": 207,
+          "question": "Thuộc tính CSS nào được dùng để căn giữa (center) một khối (block element) theo chiều ngang?",
+          "options": {
+            "A": "text-align: center;",
+            "B": "align-items: center;",
+            "C": "margin: auto;",
+            "D": "display: center;"
+          },
+          "correct_answer": "C",
+          "explanation": "Đối với các phần tử khối, sử dụng `margin: 0 auto;` (hoặc `margin: auto;` khi chiều cao không quan trọng) để căn giữa theo chiều ngang."
+        },
+        {
+          "id": 208,
+          "question": "Thuộc tính nào được sử dụng để ẩn một phần tử khỏi trang và loại bỏ nó khỏi luồng tài liệu?",
+          "options": {
+            "A": "visibility: hidden;",
+            "B": "opacity: 0;",
+            "C": "display: none;",
+            "D": "position: hidden;"
+          },
+          "correct_answer": "C",
+          "explanation": "`display: none;` loại bỏ hoàn toàn phần tử khỏi bố cục (layout) của trang."
+        },
+        {
+          "id": 209,
+          "question": "Đơn vị đo lường nào tương đối so với kích thước phông chữ của phần tử gốc (root element) (`<html>`)?",
+          "options": {
+            "A": "em",
+            "B": "px",
+            "C": "rem",
+            "D": "vw"
+          },
+          "correct_answer": "C",
+          "explanation": "`rem` (root em) tương đối với kích thước phông chữ của phần tử gốc (`<html>`)."
+        },
+        {
+          "id": 210,
+          "question": "Thuộc tính nào dùng để thay đổi độ dày (boldness) của chữ?",
+          "options": {
+            "A": "font-style",
+            "B": "font-variant",
+            "C": "font-weight",
+            "D": "text-bold"
+          },
+          "correct_answer": "C",
+          "explanation": "`font-weight` điều chỉnh độ đậm nhạt của chữ (ví dụ: `normal`, `bold`, hoặc giá trị số từ 100 đến 900)."
+        }
+      ]
+    }
+  ]
+}
