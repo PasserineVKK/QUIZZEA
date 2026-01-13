@@ -51,6 +51,7 @@ startBtn.addEventListener('click',(e)=>{
         startScreen.classList.replace('active', 'hidden');
         quizScreen.classList.replace('hidden', 'active');
         renderQuestion(topics[topicId-1]);
+        currentChoice = '';
     };
 });
 
@@ -59,7 +60,7 @@ var questionText = document.getElementById('question-text');
 var currentQuestionCounter = document.getElementById('current-ques');
 var optionBtns = document.querySelectorAll('.option-btn');
 
-
+var currentChoice;
 var questionNo = 0;
 function renderQuestion(topic){
     console.log(topic);
@@ -78,6 +79,30 @@ function renderQuestion(topic){
         const optionText = btn.querySelector('.option-text');
         optionText.textContent = currentQuiz.options[label];
     })
-    
 }
-//can lam render topic dung chu de select
+
+var feedbackText = document.getElementById('feedback');
+optionBtns.forEach(button =>{
+    button.addEventListener('click', (e)=>{
+        currentChoice = button.getAttribute('ans');
+        if (currentChoice === currentQuiz.correct_answer){
+            feedback.textContent = 'Good answer';
+        } else {
+            feedback.textContent = currentQuiz.explanation;
+        }
+    })
+});
+
+var nextBtn = document.getElementById('next-btn');
+var remainder = document.querySelector('.remainder')
+nextBtn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    if (currentChoice === ''){
+        remainder.textContent = 'You have not finished this quiz!';
+    } else {
+        currentChoice = '';
+        questionNo++;
+        renderQuestion(topics[topicId-1]);
+    }
+})
+
