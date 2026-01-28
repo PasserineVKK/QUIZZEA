@@ -253,6 +253,770 @@
           "explanation": "`font-weight` điều chỉnh độ đậm nhạt của chữ (ví dụ: `normal`, `bold`, hoặc giá trị số từ 100 đến 900)."
         }
       ]
+    },
+    {
+      "id": 3,
+      "name": "Java OOP Cơ Bản",
+      "description": "Các khái niệm nền tảng về Class, Object và các đặc tính cơ bản.",
+      "questions": [
+        {
+          "id": 301,
+          "question": "Trong Java, 'Class' được hiểu là gì?",
+          "options": {
+            "A": "Một thực thể cụ thể trong bộ nhớ.",
+            "B": "Một khuôn mẫu (blueprint) để tạo ra các đối tượng.",
+            "C": "Một biến chứa dữ liệu.",
+            "D": "Một hàm thực thi chương trình."
+          },
+          "correct_answer": "B",
+          "explanation": "Class là một khuôn mẫu định nghĩa các thuộc tính và hành vi chung, từ đó các đối tượng (Object) cụ thể được tạo ra."
+        },
+        {
+          "id": 302,
+          "question": "Từ khóa nào được dùng để tạo một đối tượng mới từ một lớp?",
+          "options": {
+            "A": "create",
+            "B": "make",
+            "C": "new",
+            "D": "init"
+          },
+          "correct_answer": "C",
+          "explanation": "Từ khóa `new` dùng để cấp phát bộ nhớ và khởi tạo một đối tượng mới."
+        },
+        {
+          "id": 303,
+          "question": "Đặc tính nào cho phép ẩn giấu thông tin và ngăn chặn sửa đổi trực tiếp dữ liệu bên trong một đối tượng?",
+          "options": {
+            "A": "Kế thừa (Inheritance)",
+            "B": "Đa hình (Polymorphism)",
+            "C": "Trừu tượng (Abstraction)",
+            "D": "Đóng gói (Encapsulation)"
+          },
+          "correct_answer": "D",
+          "explanation": "Đóng gói giúp bảo vệ dữ liệu bằng cách sử dụng các modifier như `private` và cung cấp các hàm getter/setter."
+        },
+        {
+          "id": 304,
+          "question": "Đâu là một Access Modifier cho phép truy cập ở bất cứ đâu trong dự án?",
+          "options": {
+            "A": "private",
+            "B": "protected",
+            "C": "default",
+            "D": "public"
+          },
+          "correct_answer": "D",
+          "explanation": "`public` là mức truy cập rộng nhất, cho phép tất cả các lớp khác truy cập."
+        },
+        {
+          "id": 305,
+          "question": "Phương thức khởi tạo (Constructor) có kiểu trả về là gì?",
+          "options": {
+            "A": "void",
+            "B": "int",
+            "C": "Không có kiểu trả về",
+            "D": "Cùng kiểu với tên lớp"
+          },
+          "correct_answer": "C",
+          "explanation": "Constructor không có kiểu trả về, kể cả `void`. Tên của nó phải trùng hoàn toàn với tên lớp."
+        },
+        {
+          "id": 306,
+          "question": "Từ khóa 'this' trong Java dùng để làm gì?",
+          "options": {
+            "A": "Tham chiếu đến đối tượng hiện tại của lớp.",
+            "B": "Tham chiếu đến lớp cha.",
+            "C": "Tạo một đối tượng mới.",
+            "D": "Hủy đối tượng hiện tại."
+          },
+          "correct_answer": "A",
+          "explanation": "`this` được dùng để phân biệt thuộc tính của lớp và tham số truyền vào khi chúng trùng tên."
+        },
+        {
+          "id": 307,
+          "question": "Một lớp có thể có bao nhiêu Constructor?",
+          "options": {
+            "A": "Duy nhất 1",
+            "B": "Tối đa 2",
+            "C": "Nhiều hơn 1 (Overloading)",
+            "D": "Không giới hạn và không cần trùng tên lớp"
+          },
+          "correct_answer": "C",
+          "explanation": "Java cho phép Overloading Constructor bằng cách thay đổi danh sách tham số."
+        },
+        {
+          "id": 308,
+          "question": "Nếu bạn không định nghĩa Constructor nào, Java sẽ làm gì?",
+          "options": {
+            "A": "Báo lỗi biên dịch.",
+            "B": "Tự động tạo một Default Constructor không tham số.",
+            "C": "Không cho phép tạo đối tượng.",
+            "D": "Chương trình sẽ bị dừng lúc runtime."
+          },
+          "correct_answer": "B",
+          "explanation": "Java sẽ cung cấp một constructor mặc định nếu lớp không có bất kỳ constructor nào."
+        },
+        {
+          "id": 309,
+          "question": "Đặc tính 'Kế thừa' giúp ích gì cho lập trình viên?",
+          "options": {
+            "A": "Tăng tốc độ thực thi chương trình.",
+            "B": "Tái sử dụng mã nguồn và thiết lập mối quan hệ 'is-a'.",
+            "C": "Bảo mật dữ liệu tuyệt đối.",
+            "D": "Giảm dung lượng bộ nhớ RAM."
+          },
+          "correct_answer": "B",
+          "explanation": "Kế thừa giúp lớp con sử dụng lại các thuộc tính/phương thức của lớp cha."
+        },
+        {
+          "id": 310,
+          "question": "Trong Java, một lớp con có thể kế thừa trực tiếp từ bao nhiêu lớp cha?",
+          "options": {
+            "A": "Chỉ 1 (Đơn kế thừa)",
+            "B": "2",
+            "C": "Không giới hạn",
+            "D": "Tùy thuộc vào phiên bản JDK"
+          },
+          "correct_answer": "A",
+          "explanation": "Java không hỗ trợ đa kế thừa với class để tránh xung đột (Diamond Problem)."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Java OOP Trung Cấp",
+      "description": "Đi sâu vào Đa hình, Kế thừa và Abstract.",
+      "questions": [
+        {
+          "id": 401,
+          "question": "Từ khóa 'super' được dùng để làm gì?",
+          "options": {
+            "A": "Gọi phương thức hoặc constructor của lớp cha.",
+            "B": "Tạo một lớp siêu cấp.",
+            "C": "Kết thúc chương trình.",
+            "D": "Tham chiếu đến đối tượng hiện tại."
+          },
+          "correct_answer": "A",
+          "explanation": "`super` dùng để truy cập các thành phần của lớp cha từ lớp con."
+        },
+        {
+          "id": 402,
+          "question": "Overriding (Ghi đè) xảy ra khi nào?",
+          "options": {
+            "A": "Hai phương thức cùng tên nhưng khác tham số trong cùng 1 lớp.",
+            "B": "Lớp con định nghĩa lại phương thức của lớp cha với cùng tên và tham số.",
+            "C": "Khi ta thay đổi giá trị của một biến constant.",
+            "D": "Khi một lớp kế thừa từ Interface."
+          },
+          "correct_answer": "B",
+          "explanation": "Overriding là đặc tính của đa hình lúc runtime, cho phép lớp con cung cấp cách thực thi riêng cho phương thức của cha."
+        },
+        {
+          "id": 403,
+          "question": "Đâu là quy tắc đúng của Overloading (Nạp chồng)?",
+          "options": {
+            "A": "Cùng tên phương thức, khác danh sách tham số.",
+            "B": "Cùng tên phương thức, khác kiểu trả về (nhưng tham số giống nhau).",
+            "C": "Phải có từ khóa @Override.",
+            "D": "Chỉ xảy ra giữa lớp cha và lớp con."
+          },
+          "correct_answer": "A",
+          "explanation": "Overloading chỉ quan tâm đến tên và danh sách tham số, không phụ thuộc vào kiểu trả về."
+        },
+        {
+          "id": 404,
+          "question": "Một lớp 'Abstract' có đặc điểm gì?",
+          "options": {
+            "A": "Luôn luôn phải có phương thức trừu tượng.",
+            "B": "Có thể khởi tạo đối tượng bằng từ khóa 'new'.",
+            "C": "Không thể khởi tạo đối tượng trực tiếp.",
+            "D": "Tất cả phương thức bên trong nó phải là rỗng."
+          },
+          "correct_answer": "C",
+          "explanation": "Lớp abstract dùng để làm khuôn mẫu cho các lớp con và không thể dùng `new` để tạo instance."
+        },
+        {
+          "id": 405,
+          "question": "Sự khác biệt lớn nhất giữa Interface và Abstract Class trong Java 8+ là gì?",
+          "options": {
+            "A": "Interface không được chứa biến.",
+            "B": "Lớp con chỉ được kế thừa 1 Abstract Class nhưng có thể thực thi nhiều Interface.",
+            "C": "Interface có thể khởi tạo đối tượng.",
+            "D": "Abstract class hỗ trợ đa kế thừa."
+          },
+          "correct_answer": "B",
+          "explanation": "Đây là đặc điểm kỹ thuật quan trọng nhất để vượt qua giới hạn đơn kế thừa của Java."
+        },
+        {
+          "id": 406,
+          "question": "Từ khóa 'final' áp dụng cho một 'Class' có ý nghĩa gì?",
+          "options": {
+            "A": "Lớp đó không thể có thuộc tính.",
+            "B": "Lớp đó không thể bị kế thừa.",
+            "C": "Tất cả phương thức của lớp đó phải là static.",
+            "D": "Lớp đó sẽ bị xóa sau khi thực thi."
+          },
+          "correct_answer": "B",
+          "explanation": "Một `final class` (như lớp String) là lớp cuối cùng, không cho phép ai kế thừa nó."
+        },
+        {
+          "id": 407,
+          "question": "Một phương thức 'static' có thể truy cập trực tiếp vào thành phần nào?",
+          "options": {
+            "A": "Các biến instance (không static) của lớp.",
+            "B": "Từ khóa 'this'.",
+            "C": "Các biến static khác của lớp.",
+            "D": "Các phương thức của lớp con."
+          },
+          "correct_answer": "C",
+          "explanation": "Static thuộc về lớp, nên nó chỉ có thể truy cập các thành phần static khác trực tiếp."
+        },
+        {
+          "id": 408,
+          "question": "Trong Đa hình (Polymorphism), 'Upcasting' là gì?",
+          "options": {
+            "A": "Ép kiểu từ lớp cha xuống lớp con.",
+            "B": "Gán một đối tượng của lớp con cho một biến tham chiếu kiểu lớp cha.",
+            "C": "Tự động xóa đối tượng con.",
+            "D": "Gọi phương thức private của lớp cha."
+          },
+          "correct_answer": "B",
+          "explanation": "Upcasting luôn an toàn và diễn ra tự động (ví dụ: `Animal a = new Dog();`)."
+        },
+        {
+          "id": 409,
+          "question": "Điều gì xảy ra nếu lớp con không override phương thức abstract của lớp cha?",
+          "options": {
+            "A": "Nó sẽ sử dụng phương thức mặc định của Java.",
+            "B": "Lớp con cũng phải được khai báo là abstract.",
+            "C": "Chương trình vẫn chạy bình thường.",
+            "D": "Lớp con sẽ tự động bị xóa."
+          },
+          "correct_answer": "B",
+          "explanation": "Nếu không triển khai hết các hàm abstract, lớp con bắt buộc phải là lớp abstract."
+        },
+        {
+          "id": 410,
+          "question": "Annotation '@Override' có tác dụng gì?",
+          "options": {
+            "A": "Ép buộc trình biên dịch kiểm tra xem phương thức có thực sự ghi đè từ cha không.",
+            "B": "Tăng tốc độ chạy của hàm.",
+            "C": "Cho phép hàm đó truy cập vào biến private của cha.",
+            "D": "Làm cho hàm đó trở thành static."
+          },
+          "correct_answer": "A",
+          "explanation": "@Override giúp tránh các lỗi sai tên hàm hoặc sai tham số khi định ghi đè."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Java OOP Nâng Cao",
+      "description": "Interface nâng cao, Quan hệ giữa các đối tượng và Nguyên lý thiết kế.",
+      "questions": [
+        {
+          "id": 501,
+          "question": "Từ Java 8, Interface có thể chứa phương thức có thân hàm nếu sử dụng từ khóa nào?",
+          "options": {
+            "A": "static",
+            "B": "default",
+            "C": "protected",
+            "D": "Cả A và B"
+          },
+          "correct_answer": "D",
+          "explanation": "Java 8 cho phép Interface có phương thức `default` và `static` có nội dung thực thi."
+        },
+        {
+          "id": 502,
+          "question": "Quan hệ 'Composition' (Hợp thành) khác 'Aggregation' (Tụ họp) ở điểm cốt lõi nào?",
+          "options": {
+            "A": "Composition có mối quan hệ lỏng lẻo hơn.",
+            "B": "Trong Composition, đối tượng con không thể tồn tại độc lập nếu đối tượng cha bị hủy.",
+            "C": "Aggregation yêu cầu từ khóa 'extends'.",
+            "D": "Không có sự khác biệt về mặt thực tế."
+          },
+          "correct_answer": "B",
+          "explanation": "Composition là quan hệ 'vĩnh viễn' (Ví dụ: Trái tim không thể tồn tại nếu Con người chết)."
+        },
+        {
+          "id": 503,
+          "question": "Đâu là biểu hiện của 'Binding' lúc Runtime trong Java?",
+          "options": {
+            "A": "Method Overloading",
+            "B": "Variable Shadowing",
+            "C": "Method Overriding",
+            "D": "Constructor Calling"
+          },
+          "correct_answer": "C",
+          "explanation": "Việc quyết định phương thức nào được gọi (của cha hay con) chỉ được thực hiện khi chương trình đang chạy dựa trên đối tượng thực tế."
+        },
+        {
+          "id": 504,
+          "question": "Trong mô hình SOLID, chữ 'S' (Single Responsibility Principle) nghĩa là gì?",
+          "options": {
+            "A": "Một lớp chỉ nên có một lý do duy nhất để thay đổi.",
+            "B": "Một lớp nên làm tất cả mọi thứ để tối ưu code.",
+            "C": "Mọi biến phải là static.",
+            "D": "Chỉ sử dụng một Interface cho toàn bộ hệ thống."
+          },
+          "correct_answer": "A",
+          "explanation": "Mỗi lớp chỉ nên đảm nhận một trách nhiệm cụ thể để dễ bảo trì."
+        },
+        {
+          "id": 505,
+          "question": "Một Functional Interface trong Java là gì?",
+          "options": {
+            "A": "Interface không có phương thức nào.",
+            "B": "Interface chỉ có duy nhất một phương thức trừu tượng (abstract method).",
+            "C": "Interface có nhiều phương thức static.",
+            "D": "Interface dùng để thay thế class."
+          },
+          "correct_answer": "B",
+          "explanation": "Functional Interface (như Runnable, Comparator) là nền tảng cho Lambda Expression."
+        },
+        {
+          "id": 506,
+          "question": "Kỹ thuật 'Downcasting' an toàn nhất khi kết hợp với toán tử nào?",
+          "options": {
+            "A": "is",
+            "B": "typeof",
+            "C": "instanceof",
+            "D": "cast"
+          },
+          "correct_answer": "C",
+          "explanation": "Sử dụng `instanceof` để kiểm tra đối tượng trước khi ép kiểu để tránh lỗi ClassCastException."
+        },
+        {
+          "id": 507,
+          "question": "Tính đa hình (Polymorphism) chủ yếu dựa trên cơ chế nào?",
+          "options": {
+            "A": "Late Binding",
+            "B": "Early Binding",
+            "C": "Static Binding",
+            "D": "Final Binding"
+          },
+          "correct_answer": "A",
+          "explanation": "Late binding (liên kết muộn) cho phép chọn phương thức thực thi dựa trên kiểu của đối tượng tại thời điểm chạy."
+        },
+        {
+          "id": 508,
+          "question": "Trong quan hệ kế thừa, private member của lớp cha sẽ như thế nào?",
+          "options": {
+            "A": "Lớp con có thể truy cập trực tiếp.",
+            "B": "Lớp con kế thừa nhưng không thể truy cập trực tiếp.",
+            "C": "Lớp con không kế thừa các thành phần đó.",
+            "D": "Lớp con có thể thay đổi thành public."
+          },
+          "correct_answer": "B",
+          "explanation": "Lớp con vẫn có các field private của cha nhưng phải truy cập qua các hàm public/protected (như getter/setter) của cha."
+        },
+        {
+          "id": 509,
+          "question": "Interface có thể kế thừa từ một Interface khác không?",
+          "options": {
+            "A": "Có, sử dụng từ khóa 'extends'.",
+            "B": "Có, sử dụng từ khóa 'implements'.",
+            "C": "Không, chỉ class mới kế thừa được.",
+            "D": "Có, nhưng chỉ tối đa kế thừa được 1 Interface khác."
+          },
+          "correct_answer": "A",
+          "explanation": "Một Interface có thể `extends` nhiều Interface khác để tạo ra một giao diện lớn hơn."
+        },
+        {
+          "id": 510,
+          "question": "Tại sao Java không cho phép Đa kế thừa (Multiple Inheritance) với Class?",
+          "options": {
+            "A": "Để đơn giản hóa trình biên dịch.",
+            "B": "Để tránh xung đột 'Diamond Problem'.",
+            "C": "Vì lý do bảo mật.",
+            "D": "Do giới hạn của máy ảo JVM."
+          },
+          "correct_answer": "B",
+          "explanation": "Diamond Problem xảy ra khi hai lớp cha cùng có một phương thức trùng tên, khiến lớp con không biết nên dùng bản nào."
+        }
+      ]
+    },
+    
+    {
+      "id": 6,
+      "name": "Java Library - Nhập xuất & Hệ thống",
+      "description": "Scanner, System.in/out và các thư viện cơ bản trong gói java.lang.",
+      "questions": [
+        {
+          "id": 601,
+          "question": "Phương thức nào của lớp Scanner dùng để đọc toàn bộ một dòng văn bản (bao gồm cả khoảng trắng)?",
+          "options": {
+            "A": "next()",
+            "B": "read()",
+            "C": "nextLine()",
+            "D": "getNextLine()"
+          },
+          "correct_answer": "C",
+          "explanation": "nextLine() đọc dữ liệu cho đến khi gặp ký tự xuống dòng, trong khi next() chỉ đọc đến khoảng trắng đầu tiên."
+        },
+        {
+          "id": 602,
+          "question": "Đối tượng 'System.out' là một instance của lớp nào?",
+          "options": {
+            "A": "Scanner",
+            "B": "PrintStream",
+            "C": "OutputStream",
+            "D": "BufferedWriter"
+          },
+          "correct_answer": "B",
+          "explanation": "System.out là một đối tượng kiểu PrintStream, cung cấp các phương thức như print() và println()."
+        },
+        {
+          "id": 603,
+          "question": "Lớp nào dùng để thực hiện các phép toán như căn bậc hai, lũy thừa, lượng giác?",
+          "options": {
+            "A": "java.lang.Math",
+            "B": "java.util.Calculator",
+            "C": "java.math.Advanced",
+            "D": "java.lang.System"
+          },
+          "correct_answer": "A",
+          "explanation": "Lớp Math chứa các phương thức tĩnh (static) phục vụ tính toán số học."
+        },
+        {
+          "id": 604,
+          "question": "Gói (package) nào được Java tự động import vào mọi chương trình mà không cần khai báo?",
+          "options": {
+            "A": "java.util",
+            "B": "java.io",
+            "C": "java.lang",
+            "D": "java.net"
+          },
+          "correct_answer": "C",
+          "explanation": "java.lang chứa các lớp cốt lõi như String, System, Math nên luôn được tự động import."
+        },
+        {
+          "id": 605,
+          "question": "Để so sánh nội dung của hai chuỗi String, ta nên dùng phương thức nào?",
+          "options": {
+            "A": "==",
+            "B": "compare()",
+            "C": "equals()",
+            "D": "isEqual()"
+          },
+          "correct_answer": "C",
+          "explanation": "equals() so sánh giá trị nội dung, còn == so sánh địa chỉ ô nhớ của đối tượng."
+        },
+        {
+          "id": 606,
+          "question": "Lớp nào cung cấp các phương thức để làm việc với mảng (như sắp xếp, tìm kiếm)?",
+          "options": {
+            "A": "java.util.Arrays",
+            "B": "java.util.Collections",
+            "C": "java.lang.Array",
+            "D": "java.io.Arrays"
+          },
+          "correct_answer": "A",
+          "explanation": "Arrays là lớp tiện ích chuyên dành cho mảng (Array), còn Collections dành cho các cấu trúc dữ liệu như List, Set."
+        },
+        {
+          "id": 607,
+          "question": "Mục đích của việc sử dụng 'StringBuilder' thay vì 'String' khi nối chuỗi nhiều lần là gì?",
+          "options": {
+            "A": "Để code ngắn gọn hơn.",
+            "B": "Để tiết kiệm bộ nhớ và tăng hiệu suất (do String là immutable).",
+            "C": "Để chuỗi được bảo mật hơn.",
+            "D": "Không có sự khác biệt."
+          },
+          "correct_answer": "B",
+          "explanation": "String trong Java không thể thay đổi, mỗi lần nối chuỗi sẽ tạo ra đối tượng mới. StringBuilder cho phép thay đổi trực tiếp trên một đối tượng."
+        },
+        {
+          "id": 608,
+          "question": "Phương thức System.currentTimeMillis() trả về giá trị gì?",
+          "options": {
+            "A": "Giờ hiện tại theo định dạng HH:mm:ss.",
+            "B": "Số mili giây tính từ ngày 01/01/1970.",
+            "C": "Số giây đã trôi qua trong ngày hôm nay.",
+            "D": "Năm hiện tại."
+          },
+          "correct_answer": "B",
+          "explanation": "Đây là cách tính thời gian chuẩn Epoch time trong Java."
+        },
+        {
+          "id": 609,
+          "question": "Phương thức 'Scanner.hasNextInt()' dùng để làm gì?",
+          "options": {
+            "A": "Đọc một số nguyên.",
+            "B": "Xóa số nguyên vừa nhập.",
+            "C": "Kiểm tra xem dữ liệu đầu vào có phải là số nguyên hay không.",
+            "D": "Chuyển chuỗi thành số nguyên."
+          },
+          "correct_answer": "C",
+          "explanation": "Đây là phương thức kiểm tra (validation) trước khi thực hiện đọc bằng nextInt()."
+        },
+        {
+          "id": 610,
+          "question": "Lớp nào dùng để đọc dữ liệu từ file theo cách có bộ đệm (buffered) để tăng tốc độ?",
+          "options": {
+            "A": "FileReader",
+            "B": "BufferedReader",
+            "C": "FileScanner",
+            "D": "InputStream"
+          },
+          "correct_answer": "B",
+          "explanation": "BufferedReader giúp giảm số lần truy cập đĩa vật lý bằng cách đọc một khối dữ liệu vào bộ nhớ đệm."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Java Library - Collections Framework",
+      "description": "Tìm hiểu về List, Set, Map và cách quản lý dữ liệu.",
+      "questions": [
+        {
+          "id": 701,
+          "question": "Cấu trúc dữ liệu nào cho phép lưu trữ các phần tử trùng lặp và duy trì thứ tự thêm vào?",
+          "options": {
+            "A": "Set",
+            "B": "List",
+            "C": "Map",
+            "D": "TreeSet"
+          },
+          "correct_answer": "B",
+          "explanation": "ArrayList hoặc LinkedList (kiểu List) cho phép chứa phần tử giống nhau và giữ đúng thứ tự."
+        },
+        {
+          "id": 702,
+          "question": "Đặc điểm quan trọng nhất của 'HashSet' là gì?",
+          "options": {
+            "A": "Tốc độ truy xuất chậm.",
+            "B": "Duy trì thứ tự các phần tử.",
+            "C": "Không cho phép các phần tử trùng lặp.",
+            "D": "Tự động sắp xếp các phần tử."
+          },
+          "correct_answer": "C",
+          "explanation": "Set là tập hợp các phần tử duy nhất, không có phần tử nào giống nhau."
+        },
+        {
+          "id": 703,
+          "question": "'HashMap' lưu trữ dữ liệu dưới dạng cặp nào?",
+          "options": {
+            "A": "Index - Value",
+            "B": "Key - Value",
+            "C": "First - Last",
+            "D": "Header - Body"
+          },
+          "correct_answer": "B",
+          "explanation": "Map dùng cơ chế khóa (Key) để ánh xạ tới giá trị (Value)."
+        },
+        {
+          "id": 704,
+          "question": "Để sắp xếp một danh sách ArrayList, ta sử dụng phương thức nào?",
+          "options": {
+            "A": "ArrayList.sort()",
+            "B": "Collections.sort()",
+            "C": "Arrays.sort()",
+            "D": "List.order()"
+          },
+          "correct_answer": "B",
+          "explanation": "Collections là lớp tiện ích chứa phương thức sort() cho các đối tượng List."
+        },
+        {
+          "id": 705,
+          "question": "Lớp nào triển khai (implement) List bằng cấu trúc mảng động?",
+          "options": {
+            "A": "LinkedList",
+            "B": "Vector",
+            "C": "ArrayList",
+            "D": "Stack"
+          },
+          "correct_answer": "C",
+          "explanation": "ArrayList sử dụng mảng để lưu trữ, giúp truy cập phần tử qua index cực nhanh."
+        },
+        {
+          "id": 706,
+          "question": "Phương thức nào dùng để thêm một phần tử vào cuối ArrayList?",
+          "options": {
+            "A": "push()",
+            "B": "insert()",
+            "C": "add()",
+            "D": "append()"
+          },
+          "correct_answer": "C",
+          "explanation": "add() là phương thức chuẩn để thêm phần tử vào Collection."
+        },
+        {
+          "id": 707,
+          "question": "Để lấy số lượng phần tử trong một List, ta dùng hàm nào?",
+          "options": {
+            "A": "length()",
+            "B": "size()",
+            "C": "count()",
+            "D": "capacity()"
+          },
+          "correct_answer": "B",
+          "explanation": "size() dùng cho Collections, length dùng cho Array thuần, length() dùng cho String."
+        },
+        {
+          "id": 708,
+          "question": "Trong HashMap, nếu bạn thêm một Key đã tồn tại với một Value mới, điều gì xảy ra?",
+          "options": {
+            "A": "Báo lỗi Exception.",
+            "B": "Value mới sẽ ghi đè lên Value cũ.",
+            "C": "Key mới bị từ chối.",
+            "D": "Tạo ra hai cặp Key giống nhau."
+          },
+          "correct_answer": "B",
+          "explanation": "Key trong Map là duy nhất, việc thêm trùng Key sẽ cập nhật lại giá trị cho Key đó."
+        },
+        {
+          "id": 709,
+          "question": "Lớp nào cho phép lưu trữ phần tử theo cơ chế LIFO (Vào sau ra trước)?",
+          "options": {
+            "A": "Queue",
+            "B": "Stack",
+            "C": "PriorityQueue",
+            "D": "ArrayList"
+          },
+          "correct_answer": "B",
+          "explanation": "Stack (Ngăn xếp) hoạt động theo cơ chế Last-In-First-Out."
+        },
+        {
+          "id": 710,
+          "question": "Muốn duyệt qua các phần tử của một Collection, ta thường dùng đối tượng nào?",
+          "options": {
+            "A": "Pointer",
+            "B": "Iterator",
+            "C": "Linker",
+            "D": "Reader"
+          },
+          "correct_answer": "B",
+          "explanation": "Iterator cung cấp các phương thức như hasNext() và next() để duyệt an toàn."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Java Library - Stream API & Lambda",
+      "description": "Xử lý dữ liệu phong cách lập trình hàm (Java 8+).",
+      "questions": [
+        {
+          "id": 801,
+          "question": "Stream API trong Java chủ yếu được dùng để làm gì?",
+          "options": {
+            "A": "Tạo giao diện người dùng.",
+            "B": "Xử lý tập hợp dữ liệu một cách khai báo (declarative).",
+            "C": "Kết nối cơ sở dữ liệu.",
+            "D": "Quản lý luồng thực thi (Thread)."
+          },
+          "correct_answer": "B",
+          "explanation": "Stream API giúp thực hiện các thao tác như lọc, sắp xếp, biến đổi dữ liệu ngắn gọn hơn."
+        },
+        {
+          "id": 802,
+          "question": "Thao tác 'filter' trong Stream nhận vào tham số kiểu gì?",
+          "options": {
+            "A": "Consumer",
+            "B": "Function",
+            "C": "Predicate",
+            "D": "Supplier"
+          },
+          "correct_answer": "C",
+          "explanation": "Predicate là một hàm trả về giá trị boolean (đúng/sai) để quyết định phần tử có được giữ lại hay không."
+        },
+        {
+          "id": 803,
+          "question": "Phương thức nào dùng để chuyển đổi Stream trở lại thành một danh sách (List)?",
+          "options": {
+            "A": "toList()",
+            "B": "convert()",
+            "C": "collect()",
+            "D": "finish()"
+          },
+          "correct_answer": "C",
+          "explanation": "Sử dụng collect(Collectors.toList()) để thu thập kết quả của Stream."
+        },
+        {
+          "id": 804,
+          "question": "Thao tác 'map' trong Stream dùng để làm gì?",
+          "options": {
+            "A": "Lọc các phần tử.",
+            "B": "Biến đổi mỗi phần tử sang một giá trị hoặc kiểu dữ liệu khác.",
+            "C": "Sắp xếp danh sách.",
+            "D": "Xóa các phần tử trùng lặp."
+          },
+          "correct_answer": "B",
+          "explanation": "Ví dụ: map một danh sách String sang danh sách độ dài của các String đó."
+        },
+        {
+          "id": 805,
+          "question": "Thao tác 'Terminal Operation' (Thao tác kết thúc) là gì?",
+          "options": {
+            "A": "Thao tác bắt đầu một Stream.",
+            "B": "Thao tác trả về một Stream mới.",
+            "C": "Thao tác thực thi toàn bộ pipeline và trả về kết quả cuối cùng.",
+            "D": "Thao tác dùng để đóng file."
+          },
+          "correct_answer": "C",
+          "explanation": "Stream sẽ không chạy cho đến khi một Terminal Operation (như collect, forEach, count) được gọi."
+        },
+        {
+          "id": 806,
+          "question": "Phương thức 'distinct()' trong Stream có tác dụng gì?",
+          "options": {
+            "A": "Sắp xếp tăng dần.",
+            "B": "Lọc các phần tử duy nhất (loại bỏ trùng lặp).",
+            "C": "Đảo ngược danh sách.",
+            "D": "Lấy 5 phần tử đầu tiên."
+          },
+          "correct_answer": "B",
+          "explanation": "distinct() sử dụng phương thức equals() để xác định và loại bỏ các phần tử giống nhau."
+        },
+        {
+          "id": 807,
+          "question": "Biểu thức Lambda (->) được giới thiệu từ phiên bản Java nào?",
+          "options": {
+            "A": "Java 6",
+            "B": "Java 7",
+            "C": "Java 8",
+            "D": "Java 11"
+          },
+          "correct_answer": "C",
+          "explanation": "Java 8 là phiên bản mang tính cách mạng với Lambda và Stream API."
+        },
+        {
+          "id": 808,
+          "question": "Phương thức 'forEach' thường được dùng để làm gì?",
+          "options": {
+            "A": "Thay đổi giá trị các phần tử trong Stream.",
+            "B": "Duyệt qua các phần tử để thực hiện một hành động (ví dụ: in ra).",
+            "C": "Tạo ra một Stream song song.",
+            "D": "Lọc dữ liệu."
+          },
+          "correct_answer": "B",
+          "explanation": "forEach nhận vào một Consumer và thực thi hành động đó trên từng phần tử."
+        },
+        {
+          "id": 809,
+          "question": "Để thực hiện xử lý dữ liệu song song nhằm tận dụng đa nhân CPU, ta dùng phương thức nào?",
+          "options": {
+            "A": "multiStream()",
+            "B": "parallelStream()",
+            "C": "fastStream()",
+            "D": "concurrentStream()"
+          },
+          "correct_answer": "B",
+          "explanation": "parallelStream() tự động chia nhỏ công việc để chạy trên nhiều luồng (thread) khác nhau."
+        },
+        {
+          "id": 810,
+          "question": "Phương thức 'reduce' dùng để làm gì?",
+          "options": {
+            "A": "Giảm kích thước của mảng.",
+            "B": "Kết hợp các phần tử của Stream thành một giá trị đơn nhất (ví dụ: tính tổng).",
+            "C": "Xóa toàn bộ phần tử.",
+            "D": "Chuyển Stream thành mảng."
+          },
+          "correct_answer": "B",
+          "explanation": "Reduce thực hiện gom nhóm các phần tử theo một công thức toán học hoặc logic nào đó."
+        }
+      ]
     }
   ]
+    
 }
