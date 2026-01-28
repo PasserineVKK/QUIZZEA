@@ -1,108 +1,145 @@
-var currentQuiz = {
-    id: 0,
-    question: '',
-    options: {},
-    correct_answer: '',
-    explanation: ''
-}
+// 1. KHAI BÁO BIẾN TOÀN CỤC (Global Variables)
 let topics = [];
-var startScreen = document.getElementById('start-screen');
-var quizScreen = document.getElementById('quiz-screen');
-var topicId = 1;
-// ================FETCH CSDL==================
+let score = 0;
+let questionNo = 0;
+let topicId = 0;
+let currentQuiz = null;
+let isAnswer = false;
+
+// Element màn hình
+const startScreen = document.getElementById('start-screen');
+const quizScreen = document.getElementById('quiz-screen');
+const resultScreen = document.getElementById('result-screen');
+
+// Element điều khiển & hiển thị
+const topicSelection = document.getElementById('topic-selection');
+const startBtn = document.getElementById('start-btn');
+const nextBtn = document.getElementById('next-btn');
+const restartBtn = document.getElementById('restart-btn');
+const optionBtns = document.querySelectorAll('.option-btn');
+
+const quizTopic = document.getElementById('quiz-topic');
+const questionText = document.getElementById('question-text');
+const currentQuestionCounter = document.getElementById('current-ques');
+const feedbackText = document.getElementById('feedback');
+const remainder = document.querySelector('.remainder');
 
 const DB_URL = '../db/db.json';
-var data = fetch(DB_URL)
-.then(function(response){
-    if (!response.ok) throw new Error('Fetch ERROR');
-    return response.json();
-})
-.then(function(data){
-    topics = data.topics;
-    console.log(topics);
-    displayTopics(topics);
-    console.log(topicId);
 
+// 2. KẾT NỐI DỮ LIỆU (Fetch Data)
+fetch(DB_URL)
+    .then(response => {
+        if (!response.ok) throw new Error('Fetch ERROR');
+        return response.json();
+    })
+    .then(data => {
+        topics = data.topics;
+        displayTopics(topics);
+    })
+    .catch(error => console.error(error));
 
-    
-})
-.catch(error =>{
-    console.log(error);
-})
-
-
-// ============================TOPIC HANDLE
-var topicSelection = document.getElementById('topic-selection');
-function displayTopics(topics){
-    var selectionList = '<option value="0">-----Choose one topic-----</option>'
-    topics.forEach(topic =>{
-        selectionList += `<option value="${topic.id}">${topic.name}</option>`
+// 3. CÁC HÀM HỖ TRỢ (Helper Functions)
+function displayTopics(topics) {
+    let selectionList = '<option value="0">-----Choose one topic-----</option>';
+    topics.forEach(topic => {
+        selectionList += `<option value="${topic.id}">${topic.name}</option>`;
     });
     topicSelection.innerHTML = selectionList;
 }
 
-var startBtn = document.getElementById('start-btn');
-
-
-
-startBtn.addEventListener('click',(e)=>{
-    e.stopPropagation();
-    if (topicId !== 0){
-        startScreen.classList.replace('active', 'hidden');
-        quizScreen.classList.replace('hidden', 'active');
-        renderQuestion(topics[topicId-1]);
-        currentChoice = '';
-    };
-});
-
-var quizTopic = document.getElementById('quiz-topic');
-var questionText = document.getElementById('question-text');
-var currentQuestionCounter = document.getElementById('current-ques');
-var optionBtns = document.querySelectorAll('.option-btn');
-
-var currentChoice;
-var questionNo = 0;
-function renderQuestion(topic){
-    console.log(topic);
-    var topicName = topic.name;
-    quizTopic.textContent = "TOPIC: "+topicName;
-
-    var questions = topic.questions;
+function renderQuestion(topic) {
+    const questions = topic.questions;
     currentQuiz = questions[questionNo];
 
-    currentQuestionCounter.textContent = questionNo;
-    questionText.textContent = currentQuiz.question;
-    console.log(currentQuiz);
+    if (currentQuiz) {
+        // Cập nhật giao diện câu hỏi
+        quizTopic.textContent = "TOPIC: " + topic.name;
+        currentQuestionCounter.textContent = questionNo + 1; // Thường bắt đầu từ 1 cho user dễ nhìn
+        questionText.textContent = currentQuiz.question;
 
-    optionBtns.forEach(btn => {
-        const label = btn.querySelector('.option-label').textContent;
-        const optionText = btn.querySelector('.option-text');
-        optionText.textContent = currentQuiz.options[label];
-    })
+        optionBtns.forEach(btn => {
+            const label = btn.querySelector('.option-label').textContent;
+            const optionText = btn.querySelector('.option-text');
+            optionText.textContent = currentQuiz.options[label];
+        });
+    } else {
+        // Khi hết câu hỏi
+        showScreen(resultScreen);
+        renderResult();
+    }
 }
 
-var feedbackText = document.getElementById('feedback');
-optionBtns.forEach(button =>{
-    button.addEventListener('click', (e)=>{
-        currentChoice = button.getAttribute('ans');
-        if (currentChoice === currentQuiz.correct_answer){
-            feedback.textContent = 'Good answer';
-        } else {
-            feedback.textContent = currentQuiz.explanation;
-        }
-    })
+function optionBtnsDisable(status) {
+    optionBtns.forEach(btn => btn.disabled = status);
+}
+
+function renderResult() {
+    const finalScore = document.getElementById('final-score');
+    if (finalScore) finalScore.textContent = score;
+}
+
+// Hàm bổ trợ để chuyển màn hình an toàn
+function showScreen(targetScreen) {
+    [startScreen, quizScreen, resultScreen].forEach(screen => {
+        screen.classList.remove('active');
+        screen.classList.add('hidden');
+    });
+    targetScreen.classList.remove('hidden');
+    targetScreen.classList.add('active');
+}
+
+// 4. GÁN SỰ KIỆN (Event Listeners)
+
+// Nút Bắt đầu
+startBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    topicId = topicSelection.value;
+    if (topicId !== "0") {
+        score = 0;
+        questionNo = 0;
+        feedbackText.textContent = '';
+        showScreen(quizScreen);
+        renderQuestion(topics[topicId - 1]);
+    }
 });
 
-var nextBtn = document.getElementById('next-btn');
-var remainder = document.querySelector('.remainder')
-nextBtn.addEventListener('click', (e)=>{
+// Các nút chọn đáp án
+optionBtns.forEach(button => {
+    button.addEventListener('click', () => {
+        const currentChoice = button.getAttribute('ans');
+        
+        if (currentChoice === currentQuiz.correct_answer) {
+            feedbackText.textContent = 'Good answer!';
+            score++;
+        } else {
+            feedbackText.textContent = currentQuiz.explanation;
+        }
+        
+        isAnswer = true;
+        optionBtnsDisable(true);
+    });
+});
+
+// Nút câu tiếp theo
+nextBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    if (currentChoice === ''){
+    if (!isAnswer) {
         remainder.textContent = 'You have not finished this quiz!';
     } else {
-        currentChoice = '';
+        remainder.textContent = '';
+        feedbackText.textContent = '';
         questionNo++;
-        renderQuestion(topics[topicId-1]);
+        isAnswer = false;
+        optionBtnsDisable(false);
+        renderQuestion(topics[topicId - 1]);
     }
-})
+});
 
+// Nút chơi lại
+restartBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    topicId = 0;
+    isAnswer = false;
+    optionBtnsDisable(false);
+    showScreen(startScreen);
+});
