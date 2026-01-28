@@ -24,7 +24,7 @@ const currentQuestionCounter = document.getElementById('current-ques');
 const feedbackText = document.getElementById('feedback');
 const remainder = document.querySelector('.remainder');
 
-const DB_URL = '../db/db.json';
+const DB_URL = 'db/db.json';
 
 // 2. KẾT NỐI DỮ LIỆU (Fetch Data)
 fetch(DB_URL)
