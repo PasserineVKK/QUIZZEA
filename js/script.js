@@ -101,13 +101,8 @@ function generateReviewHTML(results) {
 }
 
 function startTimer(durationInMinutes) {
-    // Xóa bộ đếm cũ nếu có
     clearInterval(timerInterval);
-    
-    // Chuyển phút sang giây
     timeLeft = durationInMinutes * 60;
-    
-    // Tạo element hiển thị thời gian nếu chưa có trong HTML
     let timerDisplay = document.getElementById('timer-display');
     if (!timerDisplay) {
         timerDisplay = document.createElement('div');
@@ -127,8 +122,6 @@ function startTimer(durationInMinutes) {
             clearInterval(timerInterval);
             timerDisplay.textContent = "HẾT GIỜ!";
             alert("Đã hết thời gian làm bài!");
-            
-            // Tự động kết thúc và hiện kết quả
             showScreen(resultScreen);
             renderResult();
         }
