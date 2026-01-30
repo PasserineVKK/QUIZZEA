@@ -171,7 +171,10 @@ restartBtn.addEventListener('click', () => {
 });
 
 function showScreen(screen) {
-    [startScreen, quizScreen, resultScreen].forEach(s => s.classList.add('hidden'));
+    [startScreen, quizScreen, resultScreen].forEach(s =>{
+         s.classList.add('hidden');
+        s.classList.remove('active')
+        });
     screen.classList.remove('hidden');
 }
 
