@@ -1016,6 +1016,37 @@
           "explanation": "Reduce thực hiện gom nhóm các phần tử theo một công thức toán học hoặc logic nào đó."
         }
       ]
+    },
+    {
+      "id": 9,
+      "name": "test",
+      "description": "Xử lý dữ liệu phong cách lập trình hàm (Java 8+).",
+      "questions": [
+        {
+          "id": 901,
+          "question": "Stream API trong Java chủ yếu được dùng để làm gì?",
+          "options": {
+            "A": "Tạo giao diện người dùng.",
+            "B": "Xử lý tập hợp dữ liệu một cách khai báo (declarative).",
+            "C": "Kết nối cơ sở dữ liệu.",
+            "D": "Quản lý luồng thực thi (Thread)."
+          },
+          "correct_answer": "B",
+          "explanation": "Stream API giúp thực hiện các thao tác như lọc, sắp xếp, biến đổi dữ liệu ngắn gọn hơn."
+        },
+         {
+          "id": 902,
+          "question": "Thẻ nào được sử dụng để đánh dấu phần đầu trang (header) của một tài liệu hoặc một phần (section/article)?",
+          "options": {
+            "A": "<footer>",
+            "B": "<head>",
+            "C": "<top>",
+            "D": "<header>"
+          },
+          "correct_answer": "D",
+          "explanation": "Thẻ `<header>` chứa nội dung giới thiệu hoặc điều hướng."
+        }
+      ]
     }
   ]
     

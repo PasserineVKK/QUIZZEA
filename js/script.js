@@ -75,7 +75,34 @@ function optionBtnsDisable(status) {
 
 function renderResult() {
     const finalScore = document.getElementById('final-score');
+    const reviewContainer = document.getElementById('review-container');
+    
+    // Tìm topic hiện tại từ danh sách topics
+    const selectedTopic = topics.find(t => t.id == topicId);
+
     if (finalScore) finalScore.textContent = score;
+
+    if (selectedTopic && selectedTopic.questions) {
+        let reviewHTML = '';
+        selectedTopic.questions.forEach((q, index) => {
+            const safeQuestion = escapeHTML(q.question);
+            const safeCorrectAns = escapeHTML(q.options[q.correct_answer]);
+            const safeExplanation = escapeHTML(q.explanation);
+
+            reviewHTML += `
+                <div class="review-item" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                    <p><strong>Câu ${index + 1}: ${safeQuestion}</strong></p>
+                    <p style="color: #2e7d32;">
+                        Đáp án đúng: <strong>${q.correct_answer}</strong> - ${safeCorrectAns}
+                    </p>
+                    <p style="background: #f9f9f9; padding: 10px; border-left: 4px solid #007bff;">
+                        <em>Giải thích: ${safeExplanation}</em>
+                    </p>
+                </div>
+            `;
+        });
+        reviewContainer.innerHTML = reviewHTML;
+    }
 }
 
 // Hàm bổ trợ để chuyển màn hình an toàn
@@ -86,6 +113,20 @@ function showScreen(targetScreen) {
     });
     targetScreen.classList.remove('hidden');
     targetScreen.classList.add('active');
+}
+
+// Hàm thoát HTML
+function escapeHTML(str) {
+    if (!str) return "";
+    return str.replace(/[&<>"']/g, function(m) {
+        return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        }[m];
+    });
 }
 
 // 4. GÁN SỰ KIỆN (Event Listeners)
