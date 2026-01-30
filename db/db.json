@@ -2,6 +2,7 @@
   "topics": [
     {
       "id": 1,
+      "time":5,
       "name": "Semantic HTML",
       "description": "Các thẻ HTML có ý nghĩa rõ ràng về nội dung.",
       "questions": [
@@ -129,6 +130,7 @@
     },
     {
       "id": 2,
+      "time":7,
       "name": "Thuộc tính cơ bản trong CSS",
       "description": "Các thuộc tính CSS thường gặp để định dạng trang web.",
       "questions": [
@@ -256,6 +258,7 @@
     },
     {
       "id": 3,
+      "time":10,
       "name": "Java OOP Cơ Bản",
       "description": "Các khái niệm nền tảng về Class, Object và các đặc tính cơ bản.",
       "questions": [
@@ -383,6 +386,7 @@
     },
     {
       "id": 4,
+      "time":12,
       "name": "Java OOP Trung Cấp",
       "description": "Đi sâu vào Đa hình, Kế thừa và Abstract.",
       "questions": [
@@ -510,6 +514,7 @@
     },
     {
       "id": 5,
+      "time":12,
       "name": "Java OOP Nâng Cao",
       "description": "Interface nâng cao, Quan hệ giữa các đối tượng và Nguyên lý thiết kế.",
       "questions": [
@@ -638,6 +643,7 @@
     
     {
       "id": 6,
+      "time":8,
       "name": "Java Library - Nhập xuất & Hệ thống",
       "description": "Scanner, System.in/out và các thư viện cơ bản trong gói java.lang.",
       "questions": [
@@ -765,6 +771,7 @@
     },
     {
       "id": 7,
+      "time":8,
       "name": "Java Library - Collections Framework",
       "description": "Tìm hiểu về List, Set, Map và cách quản lý dữ liệu.",
       "questions": [
@@ -892,6 +899,7 @@
     },
     {
       "id": 8,
+      "time":9,
       "name": "Java Library - Stream API & Lambda",
       "description": "Xử lý dữ liệu phong cách lập trình hàm (Java 8+).",
       "questions": [
@@ -1019,6 +1027,7 @@
     },
     {
       "id": 9,
+      "time":5,
       "name": "test",
       "description": "Xử lý dữ liệu phong cách lập trình hàm (Java 8+).",
       "questions": [
