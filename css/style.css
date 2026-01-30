@@ -1,46 +1,139 @@
 /* Thiết lập cơ bản */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    padding: 20px;
-}
-
-/* Ẩn các màn hình không hoạt động */
-.screen.hidden {
-    display: none;
-}
-
-.screen.active {
-    display: block;
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* Định dạng cho màn hình bắt đầu */
-#topic-selection {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9ecef;
+    padding: 0;
+    margin: 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-.topic-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
+.screen.hidden {
+    display: none !important;
+}
+
+/* Container chính của màn hình Start */
+#start-screen.active {
+    display: flex;
+    flex-direction: row; /* Chia 2 cột */
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    width: 95%;
+    min-height: 400px;
+    margin: auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    padding: 50px;
+    gap: 40px;
+}
+
+/* CỘT TRÁI: Tên App + Tagline */
+.app-info {
+    flex: 1;
+}
+
+#start-screen h1 {
+    font-size: 64px;
+    margin: 0;
+    color: #333;
+    line-height: 1;
+    letter-spacing: -2px;
+   
+}
+
+#tagline {
+    font-size: 20px;
+    color: #666;
+    margin-top: 10px;
+    font-weight: normal;
+     margin-bottom:300px;
+}
+
+/* CỘT PHẢI: Select + Button */
+.selection-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.selection-area h3 {
+    margin-bottom: -10px;
+    color: #444;
+}
+
+/* Custom Select Dropdown */
+#topic-selection {
+    appearance: none; /* Xóa style mặc định của trình duyệt */
+    padding: 15px 20px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px top 50%;
+    background-size: 12px auto;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    color: #333;
 }
 
-.topic-button:hover {
-    background-color: #0056b3;
+#topic-selection:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
 }
 
+#topic-selection option {
+    padding: 15px; /* Tạo khoảng trống cho chữ */
+    background-color: #ffffff;
+    color: #333;
+    font-size: 16px;
 
-/*  */
+    /* Lưu ý: Một số trình duyệt chỉ nhận padding/height rất hạn chế ở đây */
+}
+
+/* NÚT BẤM CẢM GIÁC 3D (ẤN XUỐNG) */
+#start-btn {
+    padding: 18px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    
+    /* Tạo khối cho nút */
+    box-shadow: 0 6px 0 #0056b3; 
+    transition: all 0.1s active;
+    position: relative;
+    top: 0;
+}
+
+#start-btn:hover {
+    background-color: #0069d9;
+}
+
+#start-btn:active {
+    /* Hiệu ứng khi ấn xuống */
+    top: 4px;
+    box-shadow: 0 2px 0 #0056b3;
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 768px) {
+    #start-screen.active {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+    #start-screen h1 { font-size: 48px; }
+    #topic-selection { width: 100%; }
+}

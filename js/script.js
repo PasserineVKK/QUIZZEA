@@ -116,12 +116,11 @@ function startTimer(durationInMinutes) {
         const seconds = timeLeft % 60;
 
         // Định dạng hiển thị MM:SS
-        timerDisplay.textContent = `Thời gian còn lại: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        timerDisplay.textContent = `Time: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            timerDisplay.textContent = "HẾT GIỜ!";
-            alert("Đã hết thời gian làm bài!");
+            timerDisplay.textContent = "TIME OUT!";
             showScreen(resultScreen);
             renderResult();
         }
