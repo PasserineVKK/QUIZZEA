@@ -6,6 +6,8 @@ let topicId = 0;
 let currentQuiz = null;
 let isAnswer = false;
 let userResults = []; 
+let timerInterval = null;
+let timeLeft = 0;
 
 // Elements
 const startScreen = document.getElementById('start-screen');
@@ -57,6 +59,7 @@ function renderQuestion(topic) {
             btn.classList.remove('correct', 'wrong'); 
         });
     } else {
+        clearInterval(timerInterval);
         showScreen(resultScreen);
         renderResult();
     }
@@ -97,6 +100,42 @@ function generateReviewHTML(results) {
     `).join('');
 }
 
+function startTimer(durationInMinutes) {
+    // Xóa bộ đếm cũ nếu có
+    clearInterval(timerInterval);
+    
+    // Chuyển phút sang giây
+    timeLeft = durationInMinutes * 60;
+    
+    // Tạo element hiển thị thời gian nếu chưa có trong HTML
+    let timerDisplay = document.getElementById('timer-display');
+    if (!timerDisplay) {
+        timerDisplay = document.createElement('div');
+        timerDisplay.id = 'timer-display';
+        timerDisplay.style = "font-weight: bold; color: red; margin: 10px 0;";
+        quizScreen.insertBefore(timerDisplay, quizTopic);
+    }
+
+    timerInterval = setInterval(() => {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+
+        // Định dạng hiển thị MM:SS
+        timerDisplay.textContent = `Thời gian còn lại: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            timerDisplay.textContent = "HẾT GIỜ!";
+            alert("Đã hết thời gian làm bài!");
+            
+            // Tự động kết thúc và hiện kết quả
+            showScreen(resultScreen);
+            renderResult();
+        }
+        timeLeft--;
+    }, 1000);
+}
+
 window.toggleHistory = (index) => {
     const el = document.getElementById(`hist-content-${index}`);
     el.style.display = el.style.display === 'none' ? 'block' : 'none';
@@ -126,8 +165,9 @@ startBtn.addEventListener('click', () => {
         questionNo = 0;
         userResults = []; 
         showScreen(quizScreen);
-        
         renderQuestion(selectedTopic);
+        const quizTime = selectedTopic.time || 5;
+        startTimer(quizTime);
     }
 });
 
