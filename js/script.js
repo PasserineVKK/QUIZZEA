@@ -1,44 +1,37 @@
-// 1. KHAI BÁO BIẾN TOÀN CỤC (Global Variables)
+// 1. VARIABLES
 let topics = [];
 let score = 0;
 let questionNo = 0;
 let topicId = 0;
 let currentQuiz = null;
 let isAnswer = false;
+let userResults = []; 
 
-// Element màn hình
+// Elements
 const startScreen = document.getElementById('start-screen');
 const quizScreen = document.getElementById('quiz-screen');
 const resultScreen = document.getElementById('result-screen');
-
-// Element điều khiển & hiển thị
 const topicSelection = document.getElementById('topic-selection');
 const startBtn = document.getElementById('start-btn');
 const nextBtn = document.getElementById('next-btn');
 const restartBtn = document.getElementById('restart-btn');
 const optionBtns = document.querySelectorAll('.option-btn');
-
 const quizTopic = document.getElementById('quiz-topic');
 const questionText = document.getElementById('question-text');
 const currentQuestionCounter = document.getElementById('current-ques');
 const feedbackText = document.getElementById('feedback');
 const remainder = document.querySelector('.remainder');
 
-const DB_URL = 'db/db.json';
 
-// 2. KẾT NỐI DỮ LIỆU (Fetch Data)
+let DB_URL = 'db/db.json'
+// 2. FETCH DATA
 fetch(DB_URL)
-    .then(response => {
-        if (!response.ok) throw new Error('Fetch ERROR');
-        return response.json();
-    })
+    .then(res => res.json())
     .then(data => {
         topics = data.topics;
         displayTopics(topics);
-    })
-    .catch(error => console.error(error));
+    });
 
-// 3. CÁC HÀM HỖ TRỢ (Helper Functions)
 function displayTopics(topics) {
     let selectionList = '<option value="0">-----Choose one topic-----</option>';
     topics.forEach(topic => {
@@ -47,123 +40,119 @@ function displayTopics(topics) {
     topicSelection.innerHTML = selectionList;
 }
 
+// 3. LOGIC QUIZ
 function renderQuestion(topic) {
+    if (!topic) return;
     const questions = topic.questions;
     currentQuiz = questions[questionNo];
 
     if (currentQuiz) {
-        // Cập nhật giao diện câu hỏi
         quizTopic.textContent = "TOPIC: " + topic.name;
-        currentQuestionCounter.textContent = questionNo + 1; // Thường bắt đầu từ 1 cho user dễ nhìn
+        currentQuestionCounter.textContent = questionNo + 1;
         questionText.textContent = currentQuiz.question;
 
         optionBtns.forEach(btn => {
-            const label = btn.querySelector('.option-label').textContent;
-            const optionText = btn.querySelector('.option-text');
-            optionText.textContent = currentQuiz.options[label];
+            const label = btn.getAttribute('ans');
+            btn.querySelector('.option-text').textContent = currentQuiz.options[label];
+            btn.classList.remove('correct', 'wrong'); 
         });
     } else {
-        // Khi hết câu hỏi
         showScreen(resultScreen);
         renderResult();
     }
 }
 
-function optionBtnsDisable(status) {
-    optionBtns.forEach(btn => btn.disabled = status);
-}
-
 function renderResult() {
+    saveToLocal();
     const finalScore = document.getElementById('final-score');
     const reviewContainer = document.getElementById('review-container');
-    
-    // Tìm topic hiện tại từ danh sách topics
-    const selectedTopic = topics.find(t => t.id == topicId);
-
     if (finalScore) finalScore.textContent = score;
 
-    if (selectedTopic && selectedTopic.questions) {
-        let reviewHTML = '';
-        selectedTopic.questions.forEach((q, index) => {
-            const safeQuestion = escapeHTML(q.question);
-            const safeCorrectAns = escapeHTML(q.options[q.correct_answer]);
-            const safeExplanation = escapeHTML(q.explanation);
-
-            reviewHTML += `
-                <div class="review-item" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
-                    <p><strong>Câu ${index + 1}: ${safeQuestion}</strong></p>
-                    <p style="color: #2e7d32;">
-                        Đáp án đúng: <strong>${q.correct_answer}</strong> - ${safeCorrectAns}
-                    </p>
-                    <p style="background: #f9f9f9; padding: 10px; border-left: 4px solid #007bff;">
-                        <em>Giải thích: ${safeExplanation}</em>
-                    </p>
+    // Lấy lịch sử 3 lượt từ LocalStorage
+    const history = JSON.parse(localStorage.getItem('quiz_history')) || [];
+    
+    let historyHTML = `<h3>Lịch sử 3 lượt gần nhất (Nhấn để xem):</h3>`;
+    history.forEach((entry, index) => {
+        historyHTML += `
+            <div class="history-item" style="margin-bottom: 10px; border: 1px solid #ddd;">
+                <button onclick="toggleHistory(${index})" style="width:100%; padding:10px; text-align:left; background:#f4f4f4; border:none; cursor:pointer;">
+                    <strong>${entry.topicName}</strong> - ${entry.score} điểm (${entry.date}) ▾
+                </button>
+                <div id="hist-content-${index}" style="display:none; padding:10px;">
+                    ${generateReviewHTML(entry.results)}
                 </div>
-            `;
-        });
-        reviewContainer.innerHTML = reviewHTML;
-    }
-}
-
-// Hàm bổ trợ để chuyển màn hình an toàn
-function showScreen(targetScreen) {
-    [startScreen, quizScreen, resultScreen].forEach(screen => {
-        screen.classList.remove('active');
-        screen.classList.add('hidden');
+            </div>
+        `;
     });
-    targetScreen.classList.remove('hidden');
-    targetScreen.classList.add('active');
+    reviewContainer.innerHTML = historyHTML;
 }
 
-// Hàm thoát HTML
-function escapeHTML(str) {
-    if (!str) return "";
-    return str.replace(/[&<>"']/g, function(m) {
-        return {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#039;'
-        }[m];
-    });
+function generateReviewHTML(results) {
+    return results.map((item, idx) => `
+        <div style="margin-bottom:10px; border-bottom:1px dashed #ccc;">
+            <p><strong>Câu ${idx + 1}:</strong> ${escapeHTML(item.question)}</p>
+            <p style="color:${item.isCorrect ? 'green' : 'red'}">Bạn chọn: ${escapeHTML(item.userAnswerText)}</p>
+            ${!item.isCorrect ? `<p style="color:green">Đáp án đúng: ${escapeHTML(item.correctAnswerText)}</p>` : ''}
+        </div>
+    `).join('');
 }
 
-// 4. GÁN SỰ KIỆN (Event Listeners)
+window.toggleHistory = (index) => {
+    const el = document.getElementById(`hist-content-${index}`);
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+};
 
-// Nút Bắt đầu
-startBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
+function saveToLocal() {
+    let history = JSON.parse(localStorage.getItem('quiz_history')) || [];
+    const currentTopic = topics.find(t => t.id == topicId);
+    
+    const newEntry = {
+        topicName: currentTopic ? currentTopic.name : "Unknown",
+        score: `${score}/${userResults.length}`,
+        date: new Date().toLocaleString(),
+        results: userResults
+    };
+
+    history.unshift(newEntry);
+    localStorage.setItem('quiz_history', JSON.stringify(history.slice(0, 3)));
+}
+
+// 4. EVENT LISTENERS
+startBtn.addEventListener('click', () => {
     topicId = topicSelection.value;
-    if (topicId !== "0") {
+    const selectedTopic = topics.find(t => t.id == topicId);
+    if (selectedTopic) {
         score = 0;
         questionNo = 0;
-        feedbackText.textContent = '';
+        userResults = []; 
         showScreen(quizScreen);
-        renderQuestion(topics[topicId - 1]);
+        
+        renderQuestion(selectedTopic);
     }
 });
 
-// Các nút chọn đáp án
 optionBtns.forEach(button => {
     button.addEventListener('click', () => {
         const currentChoice = button.getAttribute('ans');
+        const isCorrect = currentChoice === currentQuiz.correct_answer;
         
-        if (currentChoice === currentQuiz.correct_answer) {
-            feedbackText.textContent = 'Good answer!';
-            score++;
-        } else {
-            feedbackText.textContent = currentQuiz.explanation;
-        }
-        
+        if (isCorrect) score++;
+        feedbackText.textContent = isCorrect ? 'Good answer!' : currentQuiz.explanation;
+
+        userResults.push({
+            question: currentQuiz.question,
+            userAnswerText: currentQuiz.options[currentChoice],
+            correctAnswerText: currentQuiz.options[currentQuiz.correct_answer],
+            isCorrect: isCorrect,
+            explanation: currentQuiz.explanation
+        });
+
         isAnswer = true;
         optionBtnsDisable(true);
     });
 });
 
-// Nút câu tiếp theo
-nextBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
+nextBtn.addEventListener('click', () => {
     if (!isAnswer) {
         remainder.textContent = 'You have not finished this quiz!';
     } else {
@@ -172,15 +161,24 @@ nextBtn.addEventListener('click', (e) => {
         questionNo++;
         isAnswer = false;
         optionBtnsDisable(false);
-        renderQuestion(topics[topicId - 1]);
+        const selectedTopic = topics.find(t => t.id == topicId);
+        renderQuestion(selectedTopic); 
     }
 });
 
-// Nút chơi lại
-restartBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    topicId = 0;
-    isAnswer = false;
-    optionBtnsDisable(false);
+restartBtn.addEventListener('click', () => {
     showScreen(startScreen);
 });
+
+function showScreen(screen) {
+    [startScreen, quizScreen, resultScreen].forEach(s => s.classList.add('hidden'));
+    screen.classList.remove('hidden');
+}
+
+function optionBtnsDisable(status) {
+    optionBtns.forEach(btn => btn.disabled = status);
+}
+
+function escapeHTML(str) {
+    return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#039;"}[m]));
+}
