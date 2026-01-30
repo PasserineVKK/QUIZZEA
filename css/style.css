@@ -1,4 +1,4 @@
-/* Thiết lập cơ bản */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #e9ecef;
@@ -14,10 +14,9 @@ body {
     display: none !important;
 }
 
-/* Container chính của màn hình Start */
 #start-screen.active {
     display: flex;
-    flex-direction: row; /* Chia 2 cột */
+    flex-direction: row; 
     align-items: center;
     justify-content: space-between;
     max-width: 900px;
@@ -68,7 +67,7 @@ body {
 
 /* Custom Select Dropdown */
 #topic-selection {
-    appearance: none; /* Xóa style mặc định của trình duyệt */
+    appearance: none; 
     padding: 15px 20px;
     font-size: 16px;
     border: 2px solid #ddd;
@@ -90,15 +89,13 @@ body {
 }
 
 #topic-selection option {
-    padding: 15px; /* Tạo khoảng trống cho chữ */
+    padding: 15px; 
     background-color: #ffffff;
     color: #333;
     font-size: 16px;
-
-    /* Lưu ý: Một số trình duyệt chỉ nhận padding/height rất hạn chế ở đây */
+    
 }
 
-/* NÚT BẤM CẢM GIÁC 3D (ẤN XUỐNG) */
 #start-btn {
     padding: 18px 30px;
     font-size: 20px;
@@ -110,7 +107,6 @@ body {
     border-radius: 12px;
     cursor: pointer;
     
-    /* Tạo khối cho nút */
     box-shadow: 0 6px 0 #0056b3; 
     transition: all 0.1s active;
     position: relative;
@@ -122,12 +118,244 @@ body {
 }
 
 #start-btn:active {
-    /* Hiệu ứng khi ấn xuống */
     top: 4px;
     box-shadow: 0 2px 0 #0056b3;
 }
 
-/* Responsive cho điện thoại */
+/* --- QUIZ SCREEN --- */
+
+#quiz-screen {
+    width:800px;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    margin: 20px auto;
+}
+
+#quiz-topic {
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#timer-display{
+    height:10px;
+}
+#question-counter {
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+   
+}
+
+.remainder {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+    font-weight: bold;
+    color: #dc3545; 
+    background: #fff5f5;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 20px;
+    border: 1px solid #ffc9c9;
+}
+
+#question-text {
+    font-size: 20px;
+    color: #333;
+    line-height: 1.0;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.option-btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    font-size: 17px;
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    position: relative;
+    top: 0;
+    box-shadow: 0 4px 0 #dee2e6; 
+    width: 100%; 
+}
+
+.option-label {
+    font-weight: bold;
+    background: #007bff;
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.option-btn:hover {
+    background-color: #e7f1ff;
+    border-color: #007bff;
+}
+
+.option-btn:active {
+    top: 3px;
+    box-shadow: 0 1px 0 #dee2e6;
+}
+
+
+#feedback {
+    min-height: 60px; 
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+}
+
+
+#next-btn {
+    margin-top:10px;
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #1e7e34;
+    transition: all 0.1s;
+}
+
+#next-btn:active {
+    position: relative;
+    top: 4px;
+    box-shadow: 0 1px 0 #1e7e34;
+}
+
+.option-btn.correct {
+    background-color: #d4edda !important; 
+    border-color: #28a745 !important;     
+    color: #155724 !important;          
+    box-shadow: 0 3px 0 #1e7e34 !important; 
+}
+
+.option-btn.correct .option-label {
+    background-color: #28a745 !important;
+}
+
+
+.option-btn.incorrect {
+    background-color: #f8d7da !important; 
+    border-color: #dc3545 !important;     
+    color: #721c24 !important;         
+    box-shadow: 0 3px 0 #a71d2a !important; 
+}
+
+
+/* --- RESULT SCREEN --- */
+
+#result-screen {
+    max-width: 600px;
+    width: 600px;
+    
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+#result-screen h1 {
+    font-size: 42px;
+    color: #333;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+#result-screen p {
+    font-size: 20px;
+    color: #666;
+    margin: 20px 0;
+}
+
+#final-score {
+    display: block;
+    font-size: 64px;
+    font-weight: 800;
+    color: #007bff; 
+    margin: 10px 0;
+}
+
+
+#restart-btn {
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #0056b3;
+    transition: all 0.1s;
+    position: relative;
+    top: 0;
+    margin-bottom: 30px;
+}
+
+#restart-btn:hover {
+    background-color: #0069d9;
+}
+
+#restart-btn:active {
+    top: 4px;
+    box-shadow: 0 2px 0 #0056b3;
+}
+
+
+#result-screen h2 {
+    font-size: 24px;
+    color: #444;
+    margin-top: 20px;
+    border-top: 2px solid #eee;
+    padding-top: 20px;
+    width: 100%;
+}
+
+#review-container {
+    width: 100%;
+    text-align: left;
+    margin-top: 15px;
+}
+
 @media (max-width: 768px) {
     #start-screen.active {
         flex-direction: column;
@@ -136,4 +364,12 @@ body {
     }
     #start-screen h1 { font-size: 48px; }
     #topic-selection { width: 100%; }
+    #quiz-screen {
+        padding: 20px;
+        width: 90%;
+        border-radius: 0;
+    }
+    #question-text {
+        font-size: 18px;
+    }
 }

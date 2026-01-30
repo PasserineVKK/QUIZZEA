@@ -24,11 +24,12 @@
 
     <section id="quiz-screen" class="screen hidden">
         <h2 id="quiz-topic">TOPIC: ...</h2>
+        <div id="timer-display"></div>
         <div id="question-counter">Question <span id="current-ques">0</span></div>
 
         <div class="question-box">
             <p id="question-text">Question shown here</p>
-          
+            <div id="options-container" class="options-grid">
             
 
     <button id="option-0" class="option-btn" ans="A">
@@ -54,9 +55,10 @@
 </div>
 
             </div>
-            <div id="feedback"></div>
+            
             <button id="next-btn">Next question</button>
             <div class="remainder"></div>
+            <div id="feedback"></div>
         </div>
     </section>
 
@@ -64,7 +66,6 @@
         <h1>Game end</h1>
         <p>Your score: <span id="final-score">0</span>/10</p>
         <button id="restart-btn">Replay</button>
-        <h2>Review</h2>
         <div id="review-container"></div>
     </section>
    </main>

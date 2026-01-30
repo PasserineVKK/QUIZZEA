@@ -74,12 +74,12 @@ function renderResult() {
     // Lấy lịch sử 3 lượt từ LocalStorage
     const history = JSON.parse(localStorage.getItem('quiz_history')) || [];
     
-    let historyHTML = `<h3>Lịch sử 3 lượt gần nhất (Nhấn để xem):</h3>`;
+    let historyHTML = `<h3>History:</h3>`;
     history.forEach((entry, index) => {
         historyHTML += `
             <div class="history-item" style="margin-bottom: 10px; border: 1px solid #ddd;">
                 <button onclick="toggleHistory(${index})" style="width:100%; padding:10px; text-align:left; background:#f4f4f4; border:none; cursor:pointer;">
-                    <strong>${entry.topicName}</strong> - ${entry.score} điểm (${entry.date}) ▾
+                    <strong>${entry.topicName}</strong> - ${entry.score} score (${entry.date}) ▾
                 </button>
                 <div id="hist-content-${index}" style="display:none; padding:10px;">
                     ${generateReviewHTML(entry.results)}
@@ -93,9 +93,9 @@ function renderResult() {
 function generateReviewHTML(results) {
     return results.map((item, idx) => `
         <div style="margin-bottom:10px; border-bottom:1px dashed #ccc;">
-            <p><strong>Câu ${idx + 1}:</strong> ${escapeHTML(item.question)}</p>
-            <p style="color:${item.isCorrect ? 'green' : 'red'}">Bạn chọn: ${escapeHTML(item.userAnswerText)}</p>
-            ${!item.isCorrect ? `<p style="color:green">Đáp án đúng: ${escapeHTML(item.correctAnswerText)}</p>` : ''}
+            <p><strong>Question ${idx + 1}:</strong> ${escapeHTML(item.question)}</p>
+            <p style="color:${item.isCorrect ? 'green' : 'red'}">Your answer: ${escapeHTML(item.userAnswerText)}</p>
+            ${!item.isCorrect ? `<p style="color:green">Correct answer: ${escapeHTML(item.correctAnswerText)}</p>` : ''}
         </div>
     `).join('');
 }
@@ -107,10 +107,10 @@ function startTimer(durationInMinutes) {
     if (!timerDisplay) {
         timerDisplay = document.createElement('div');
         timerDisplay.id = 'timer-display';
-        timerDisplay.style = "font-weight: bold; color: red; margin: 10px 0;";
         quizScreen.insertBefore(timerDisplay, quizTopic);
     }
 
+    timerDisplay.style = "font-weight: bold; color: red; margin: 10px 0;";
     timerInterval = setInterval(() => {
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
@@ -126,6 +126,14 @@ function startTimer(durationInMinutes) {
         }
         timeLeft--;
     }, 1000);
+}
+
+function handleOptionClick(selectedBtn, isCorrect) {
+    if (isCorrect) {
+        selectedBtn.classList.add('correct');
+    } else {
+        selectedBtn.classList.add('incorrect');
+    }
 }
 
 window.toggleHistory = (index) => {
@@ -167,7 +175,7 @@ optionBtns.forEach(button => {
     button.addEventListener('click', () => {
         const currentChoice = button.getAttribute('ans');
         const isCorrect = currentChoice === currentQuiz.correct_answer;
-        
+        handleOptionClick(button, isCorrect);
         if (isCorrect) score++;
         feedbackText.textContent = isCorrect ? 'Good answer!' : currentQuiz.explanation;
 
@@ -196,10 +204,20 @@ nextBtn.addEventListener('click', () => {
         const selectedTopic = topics.find(t => t.id == topicId);
         renderQuestion(selectedTopic); 
     }
+
+    optionBtns.forEach(button =>{
+        button.classList.remove('incorrect');
+        button.classList.remove('correct');
+    })
 });
 
 restartBtn.addEventListener('click', () => {
     showScreen(startScreen);
+    currentQuestionCounter = 0;
+    currentQuiz = null;
+    currentTopic = 0;
+    currentChoice = 0;
+    score = 0;
 });
 
 function showScreen(screen) {
@@ -208,6 +226,7 @@ function showScreen(screen) {
         s.classList.remove('active')
         });
     screen.classList.remove('hidden');
+    screen.classList.add('active');
 }
 
 function optionBtnsDisable(status) {
